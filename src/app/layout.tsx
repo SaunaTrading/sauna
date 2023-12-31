@@ -1,5 +1,6 @@
 import "@/styles/globals.css"
 import { Inter as FontSans } from "next/font/google"
+import MetaProvider from "@/context/providers/Provider"
 
 import { cn } from "@/lib/utils"
 import TopNav from "@/components/ui/top-nav"
@@ -19,8 +20,10 @@ export default function RootLayout({ children }: { children: React.ReactNode}) {
           fontSans.variable
         )}
       >
+        <MetaProvider>
         <TopNav />
         {children}
+        </MetaProvider>
       </body>
     </html>
   )
