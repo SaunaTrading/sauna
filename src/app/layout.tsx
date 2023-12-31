@@ -2,6 +2,7 @@ import "@/styles/globals.css"
 import { Inter as FontSans } from "next/font/google"
 
 import { cn } from "@/lib/utils"
+import TopNav from "@/components/ui/top-nav"
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode}) {
           fontSans.variable
         )}
       >
+        <TopNav />
         {children}
       </body>
     </html>
