@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sauna
 
-## Getting Started
+## Description
+Sauna is an online skin marketplace with derivatives trading functionality. It allows users to buy, sell, and trade virtual skins for various gaming platforms. The platform provides a seamless trading experience and supports the trading of derivatives based on these skins.
 
-First, run the development server:
+## Stack
+The Sauna project is built using the following technologies:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js: A React framework for server-side rendering and building web applications.
+- React: A JavaScript library for building user interfaces.
+- Shadcn: A library for managing shaders and visual effects.
+- MongoDB: A NoSQL database for storing and retrieving data.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
+- Skin marketplace: Users can browse and purchase virtual skins for their favorite games.
+- Derivatives trading: Users can trade derivatives based on virtual skins, allowing for speculation and investment opportunities.
+- User authentication: Secure user authentication and authorization system.
+- Payment integration: Integration with popular payment gateways for seamless transactions.
+- Responsive design: The application is designed to be accessible and usable across different devices and screen sizes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation
+To run the Sauna project locally, follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repository: `git clone https://github.com/your-username/sauna.git`
+2. Install dependencies: `npm install`
+3. Set up environment variables: Create a `.env` file and configure the necessary variables.
+4. Start the development server: `npm run dev`
+5. Open your browser and navigate to `http://localhost:3000`
 
-## Learn More
+## Contributing
+Contributions to Sauna are welcome! If you would like to contribute, please follow these guidelines:
 
-To learn more about Next.js, take a look at the following resources:
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/your-feature-name`
+3. Make your changes and commit them: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature-name`
+5. Open a pull request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
+This project is licensed under the [MIT License](LICENSE).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+For any inquiries or feedback, please contact the project maintainers at [host.sauna.trading@gmail.com](mailto:host.sauna.trading@gmail.com).
