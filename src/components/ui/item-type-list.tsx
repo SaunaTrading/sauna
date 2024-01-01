@@ -24,19 +24,8 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { buttonVariants } from "@/components/ui/button"
-
-/*
-<Button variant='outline' className='border-2 border-foreground'>
-                                                More
-                                            </Button>
-*/
-
-export interface ItemType {
-    name: string;
-    link: string;
-    dbFilters: string[];
-    subTypes: string[];
-}
+import ItemRow from '@/components/ui/item-row';
+import { dummyItems, ItemType } from '@/types/items';
 
 const onSubTypeClick = (itemType: ItemType) => {
     console.log(itemType.name)
@@ -75,11 +64,7 @@ export const HorizontalItemTypeList: React.FC<Props> = ({ itemTypes, onClick }) 
         // calculate the number of itemTypes that can fit in the viewport
         const newVisibleItemCount = Math.floor(viewportWidth / 130);
         // set the visibleItemCount state
-        console.log('mounted visible count is', newVisibleItemCount)
         setVisibleItemCount(newVisibleItemCount);
-
-        console.log('mounted visible count is', newVisibleItemCount)
-
         // Cleanup the event listener on component unmount
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -102,7 +87,7 @@ export const HorizontalItemTypeList: React.FC<Props> = ({ itemTypes, onClick }) 
                         <NavigationMenuItem key={itemType.name}>
                             <NavigationMenuTrigger>{itemType.name}</NavigationMenuTrigger>
                             <NavigationMenuContent className='left-0 px-4 w-full'>
-                                <div className='p-4 grid grid-rows-2'>
+                                <div className='p-4 flex flex-col w-full'>
                                     <ToggleGroup type="multiple">
                                         <div className='w-full flex justify-between'>
                                             <div className='flex w-full justify-start space-x-4'>
@@ -113,7 +98,7 @@ export const HorizontalItemTypeList: React.FC<Props> = ({ itemTypes, onClick }) 
                                                     <div className='flex'>
                                                         <div className='flex'>
                                                             {itemType.subTypes.slice(0, visibleItemCount).map((subType) => (
-                                                                <ToggleGroupItem value={subType} className='text-foreground hover:text-foreground' aria-label={`toggle ${subType}`} onClick={() => onSubTypeClick(itemType)}>
+                                                                <ToggleGroupItem key={subType} value={subType} className='text-foreground hover:text-foreground' aria-label={`toggle ${subType}`} onClick={() => onSubTypeClick(itemType)}>
                                                                     {subType}
                                                                 </ToggleGroupItem>
                                                             ))}
@@ -126,7 +111,7 @@ export const HorizontalItemTypeList: React.FC<Props> = ({ itemTypes, onClick }) 
                                                     <PopoverTrigger><span className={buttonVariants({ variant: "ghost" })}>More</span></PopoverTrigger>
                                                     <PopoverContent>
                                                         {itemType.subTypes.slice(visibleItemCount).map((subType) => (
-                                                            <ToggleGroupItem value={subType} className='text-foreground hover:text-foreground' aria-label={`toggle ${subType}`} onClick={() => onSubTypeClick(itemType)}>
+                                                            <ToggleGroupItem key={subType} value={subType} className='text-foreground hover:text-foreground' aria-label={`toggle ${subType}`} onClick={() => onSubTypeClick(itemType)}>
                                                                 {subType}
                                                             </ToggleGroupItem>
                                                         ))}
@@ -135,7 +120,8 @@ export const HorizontalItemTypeList: React.FC<Props> = ({ itemTypes, onClick }) 
                                             )}
                                         </div>
                                     </ToggleGroup>
-                                    Carousel
+                                    {itemType.name.toUpperCase()}
+                                    <ItemRow/>
                                 </div>
                             </NavigationMenuContent>
                         </NavigationMenuItem>
@@ -148,7 +134,7 @@ export const HorizontalItemTypeList: React.FC<Props> = ({ itemTypes, onClick }) 
                             <NavigationMenuContent className='right-0 px-2'>
                                 <NavigationMenuList className='w-full flex flex-col'>
                                     {itemTypes.slice(visibleItemCount).map((itemType) => (
-                                        <Link href={itemType.link} legacyBehavior passHref>
+                                        <Link key={itemType.link} href={itemType.link} legacyBehavior passHref>
                                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                                 {itemType.name}
                                             </NavigationMenuLink>
