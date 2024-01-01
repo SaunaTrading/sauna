@@ -16,7 +16,7 @@ const UserSection: React.FC = () => {
                 <IconButton icon={<Search />} className='sm:hidden' />
                 <IconButton icon={<Bell />} />
                 <IconButton icon={<User />} className='rounded-full p-2' />
-                <Button variant='ghost' asChild className='hidden md:block p-2 ml-1 mr-1'><Link href="/sell">SELL</Link></Button>
+                <Button variant='ghost' asChild className='hidden md:flex p-2 ml-1 mr-1 items-center justify-center'><Link href="/sell">SELL</Link></Button>
                 <IconButton icon={<ShoppingCart />} className='block sm:hidden rounded-full p-2' />
                 <Button className='hidden sm:block'><Link href="/shopping-cart">
                     <ShoppingCart />
