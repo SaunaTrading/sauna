@@ -12,13 +12,15 @@ const UserSection: React.FC = () => {
     const loginStatus = loggedIn();
     const loggedInSection = () => {
         return (
-            <div className="flex items-center">
-                <IconButton icon={<Search/>} className='sm:hidden'  />
-                <IconButton icon={<Bell/>} />
-                <IconButton icon={<User/>} className='rounded-full p-2'/>
-                <Button asChild className='hidden sm:block p-2 ml-1 mr-1'><Link href="/sell">SELL</Link></Button>
-                <IconButton icon={<ShoppingCart/>}className='block sm:hidden rounded-full p-2'/>
-                <Button className='hidden sm:block'><Link href="/shopping-cart"><ShoppingCart/></Link></Button>
+            <div className="flex items-center justify-evenly space-x-2">
+                <IconButton icon={<Search />} className='sm:hidden' />
+                <IconButton icon={<Bell />} />
+                <IconButton icon={<User />} className='rounded-full p-2' />
+                <Button variant='ghost' asChild className='hidden md:block p-2 ml-1 mr-1'><Link href="/sell">SELL</Link></Button>
+                <IconButton icon={<ShoppingCart />} className='block sm:hidden rounded-full p-2' />
+                <Button className='hidden sm:block'><Link href="/shopping-cart">
+                    <ShoppingCart />
+                </Link></Button>
             </div>
         );
     }

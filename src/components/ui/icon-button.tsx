@@ -14,13 +14,15 @@ export const IconButton: React.FC<IconButtonProps> = ({ icon, className, onClick
     return (
         <>
             {(!link) && (<Button
-                className={cn(className, "flex items-center justify-center w-10 h-10 rounded-full p-2 focus:outline-none")}
+                variant='ghost'
+                className={cn(className, "h-8 w-8 flex items-center justify-center rounded-full p-2 focus:outline-none")}
                 onClick={onClick}
             >
                 {icon}
             </Button>)}
             {(link) && (<Button
-                className={cn(className, "flex items-center justify-center w-10 h-10 rounded-full p-2 focus:outline-none")}
+                variant='ghost'
+                className={cn(className, "h-8 w-8 flex items-center justify-center rounded-full p-2 focus:outline-none")}
                 onClick={onClick}
                 asChild
             >
