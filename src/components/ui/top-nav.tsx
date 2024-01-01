@@ -138,7 +138,7 @@ export default function TopNav() {
                         MARKET
                     </Button>
                     <div className="hidden sm:flex items-center justify-between space-x-2 md:ml-32 lg:ml-48">
-                        <Search className='w-8 h-8 p-2 -mr-3' />
+                        <Search className='h-4 w-4 -mr-2'/>
                         <Input
                             className="hidden sm:block w-64 h-8 p-2 border-none focus-visible:ring-none"
                             placeholder="Search"
