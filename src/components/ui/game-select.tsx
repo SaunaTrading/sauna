@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils"
 export function GameSelect({className} : {className?: string}) {
     return (
         <Select>
-            <SelectTrigger className={cn(className) + "w-min border-none focus:ring-transparent focus-border-b-2"}>
+            <SelectTrigger className={"w-min border-none focus:ring-transparent focus-border-b-2" + cn(className)}>
                 <SelectValue placeholder="CS2" />
             </SelectTrigger>
             <SelectContent>

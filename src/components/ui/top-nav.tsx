@@ -27,11 +27,11 @@ export default function TopNav() {
                 <div className='flex items-center justify-between'>
                     <Hamburgler />
                     <h1 className="text-2xl font-bold mx-2">Logo</h1>
-                    <GameSelect className='hidden lg:flex' />
+                    <GameSelect className='hidden md:flex' />
                     <Button variant='ghost' className="hidden sm:flex items-center justify-center p-2 ">
                         MARKET
                     </Button>
-                    <div className="hidden sm:flex items-center justify-between space-x-2 md:ml-32 lg:ml-48">
+                    <div className="hidden sm:flex items-center justify-between space-x-2 md:ml-12 lg:ml-48">
                         <Search className='h-4 w-4 -mr-2'/>
                         <Input
                             className="hidden sm:block w-64 h-8 p-2 border-none focus-visible:ring-none"

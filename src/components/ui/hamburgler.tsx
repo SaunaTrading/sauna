@@ -11,6 +11,7 @@ import { GameSelect } from './game-select';
 import { Separator } from './separator';
 import { dummyTypes, ItemType } from '@/types/items';
 import { ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Hamburgler() {
     const getItemTypes = () => {
@@ -38,9 +39,10 @@ export default function Hamburgler() {
                                 <div key={itemType.link} className='flex flex-col items-center w-full'>
                                     <div className='flex items-center justify-between w-full'>
                                         <SheetHeader>
-                                            <SheetTitle>{itemType.name}</SheetTitle>
+                                            <SheetTitle asChild><Link href={itemType.link}>{itemType.name}</Link></SheetTitle>
                                         </SheetHeader>
-                                        <IconButton icon={<ChevronRight />} link={itemType.link} />
+                                        {/* // TODO replace with a button that opens a subtype nav */}
+                                        <IconButton icon={<ChevronRight />} />
                                     </div>
                                 </div>
                             )
