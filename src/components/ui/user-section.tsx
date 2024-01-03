@@ -20,41 +20,84 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import {
+    Avatar,
+    AvatarImage,
+    AvatarFallback
+} from "@/components/ui/avatar"
 import { Payment, columns } from "@/components/ui/columns"
 import { DataTable } from "@/components/ui/data-table"
 import { data } from "@/components/ui/data-table"
-
+import { SearchBar } from "@/components/ui/search-bar"
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
 // import { UserButton } from "@/components/ui/user-button"
 // import { ShoppingCartButton } from "@/components/ui/shopping-cart-button"
+
 const iconWidth = 18;
 const iconHeight = 18;
 
 const UserSection: React.FC = () => {
+    const closeSheet = () => {
+        document.getElementById('SheetClose')?.click();
+    }
+
     const loginStatus = loggedIn();
     const loggedInSection = () => {
         return (
             <div className="flex items-center justify-evenly space-x-2">
-                <Drawer>
-                    <IconButton className='block sm:hidden' child={<DrawerTrigger>
+                <Sheet modal={false}>
+                    <IconButton className='block sm:hidden' child={<SheetTrigger>
                         <Search width={iconWidth} height={iconHeight} />
-                    </DrawerTrigger>} />
-                    <DrawerContent>Place content for the search popover here.</DrawerContent>
-                </Drawer>
+                    </SheetTrigger>} />
+                    <SheetContent side='top' >
+                        <SearchBar className='mt-4' onEnter={closeSheet} />
+                    </SheetContent>
+                </Sheet>
                 <Popover>
                     <IconButton child={<PopoverTrigger>
                         <Bell width={iconWidth} height={iconHeight} />
                     </PopoverTrigger>} />
                     <PopoverContent>Place content for the bell popover here.</PopoverContent>
                 </Popover>
-                <Popover>
-                    <IconButton child={<PopoverTrigger>
-                        <User width={iconWidth} height={iconHeight} />
-                    </PopoverTrigger>} />
-                    <PopoverContent>Place content for the user here.</PopoverContent>
-                </Popover>
+                <DropdownMenu>
+                    <IconButton child={<DropdownMenuTrigger>
+                        <Avatar className='hidden md:block'>
+                            <AvatarImage width={iconWidth} height={iconHeight} src="https://github.com/shadcn.png" alt="@shadcn" />
+                            <AvatarFallback>
+                                <User className='block md:hidden' width={iconWidth} height={iconHeight} />
+                            </AvatarFallback>
+                        </Avatar>
+                        <User className='block md:hidden' width={iconWidth} height={iconHeight} />
+                    </DropdownMenuTrigger>} />
+                    <DropdownMenuContent>
+                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>Profile</DropdownMenuItem>
+                        <DropdownMenuItem>Billing</DropdownMenuItem>
+                        <DropdownMenuItem>Team</DropdownMenuItem>
+                        <DropdownMenuItem>Subscription</DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
 
                 <Button variant='ghost' asChild className='hidden md:flex p-2 ml-1 mr-1 items-center justify-center'><Link href="/sell">SELL</Link></Button>
-                <Button className='hidden sm:block'><Link href="/shopping-cart">
+                <Button className='px-6 hidden sm:block'><Link href="/shopping-cart">
                     <ShoppingCart className='h-4 w-4' />
                 </Link></Button>
                 <Drawer>
