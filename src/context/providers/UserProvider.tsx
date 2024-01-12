@@ -1,16 +1,9 @@
 'use client'
 import React, { createContext, useState } from 'react';
 import { useContext } from 'react';
+import { User } from '@/lib/types';
+import { users } from '@/lib/mockData';
 
-interface User {
-    name: string;
-    steamId: string;
-    profilePicture: string;
-    email?: string;
-    hashedPassword?: string;
-    userSettings?: any;
-    notifications?: string[];
-}
 
 interface UserContextType {
     user: User | null;
@@ -26,10 +19,9 @@ export const UserContext = createContext<UserContextType>({
     setUser: () => {},
 });
 
-const dummyUser: User = {name: "Tanner H", steamId: "12232322433", profilePicture: "www.google.com", userSettings: {theme: "dark"}}
 
 const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-    const [user, setUser] = useState<User | null>(dummyUser);
+    const [user, setUser] = useState<User | null>(users[0]);
 
     return (
         <UserContext.Provider value={{ user, setUser }}>

@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import Link from 'next/link';
-import { Search, ShoppingCart, Bell, User } from 'lucide-react'; // Assuming you have the required icons
+import { Search, ShoppingCart, Bell, User as UserIcon } from 'lucide-react'; // Assuming you have the required icons
 import { Button } from '@/components/ui/button'; // Assuming you have a Button component from Tailwind UI
 import { loggedIn } from '@/context/providers/UserProvider';
 import { IconButton } from '@/components/ui/icon-button';
@@ -12,12 +12,7 @@ import {
 } from "@/components/ui/popover"
 import {
     Drawer,
-    DrawerClose,
     DrawerContent,
-    DrawerDescription,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import {
@@ -33,27 +28,23 @@ import {
     AvatarImage,
     AvatarFallback
 } from "@/components/ui/avatar"
-import { Payment, columns } from "@/components/ui/columns"
+import { columns } from "@/components/ui/columns"
 import { DataTable } from "@/components/ui/data-table"
 import { data } from "@/components/ui/data-table"
 import { SearchBar } from "@/components/ui/search-bar"
 import {
     Sheet,
-    SheetClose,
     SheetContent,
-    SheetDescription,
-    SheetFooter,
-    SheetHeader,
-    SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-// import { UserButton } from "@/components/ui/user-button"
-// import { ShoppingCartButton } from "@/components/ui/shopping-cart-button"
+import { useUser } from "@/context/providers/UserProvider"
 
 const iconWidth = 18;
 const iconHeight = 18;
 
 const UserSection: React.FC = () => {
+    const { user } = useUser();
+
     const closeSheet = () => {
         document.getElementById('SheetClose')?.click();
     }
@@ -79,15 +70,15 @@ const UserSection: React.FC = () => {
                 <DropdownMenu>
                     <IconButton child={<DropdownMenuTrigger>
                         <Avatar className='hidden md:block'>
-                            <AvatarImage width={iconWidth} height={iconHeight} src="https://github.com/shadcn.png" alt="@shadcn" />
+                            <AvatarImage width={iconWidth} height={iconHeight} src={user.image} alt="@shadcn" />
                             <AvatarFallback>
-                                <User className='block md:hidden' width={iconWidth} height={iconHeight} />
+                                <UserIcon className='block md:hidden' width={iconWidth} height={iconHeight} />
                             </AvatarFallback>
                         </Avatar>
-                        <User className='block md:hidden' width={iconWidth} height={iconHeight} />
+                        <UserIcon className='block md:hidden' width={iconWidth} height={iconHeight} />
                     </DropdownMenuTrigger>} />
                     <DropdownMenuContent>
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>Profile</DropdownMenuItem>
                         <DropdownMenuItem>Billing</DropdownMenuItem>
@@ -113,7 +104,7 @@ const UserSection: React.FC = () => {
     const loggedOutSection = () => {
         return (
             <div className="flex items-center">
-                <IconButton className='block sm:hidden' icon={<User />}></IconButton>
+                <IconButton className='block sm:hidden' icon={<UserIcon />}></IconButton>
                 <div className="hidden sm:flex items-center gap-2">
                     <Button><Link href="/login">Login</Link></Button>
                     <Button><Link href="/register">Register</Link></Button>
